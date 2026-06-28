@@ -37,5 +37,43 @@ def reemplazar_fondo(matriz_img, mascara, matriz_fondo):
         chato = "Error: Las imagenes no tienen las mismas dimensiones."
         print(chato)
         return 
-    
     #me voy a dormir papus, chatisimo
+
+    resultado = matriz_fondo.copy()
+    resultado[mascara] = matriz_img[mascara] #escribe sobre los pixeles del objeto
+    
+    return resultado
+
+def coordenadas_objeto(mascara):
+    suma = int(mascara.sum())
+    
+    #ubicacion del objeto mediante filas y columnas
+    filas, columnas = np.where(mascara)
+    cordenadas = []
+    for i in range(len(filas)):
+        cordenadas.append((filas[i], columnas[i]))
+
+    return cordenadas, suma
+
+def reporte(mascara, nombre_archivo):
+  
+    try:
+        cordenadas, suma = coordenadas_objeto(mascara)
+        ahora = dt.datetime.now()
+        reporte_n = f"reporte_{ahora.strftime('%d%m%Y_%H%M%S')}.txt"
+
+        with open(reporte_n, 'w') as arch: #abrimos y creamos
+          arch.write(f"Nombre del archivo: {nombre_archivo}\n")
+          arch.write(f"Cantidad de pixeles del objeto: {suma}\n")
+          arch.write("Coordenadas de los pixeles del objeto:\n")
+          #salto para poner coordenadas despues
+          for fila, columna in cordenadas:
+              arch.write(f"({fila}, {columna})\n")
+            #que es jodida la identacion dentro de una funcion xd
+        
+        print(f"Reporte generado: {reporte_n}")
+        return reporte_n
+    
+    except Exception as e:
+        print(f"Error al generar el reporte: {e}")
+        return
