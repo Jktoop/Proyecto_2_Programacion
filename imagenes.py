@@ -19,7 +19,7 @@ def lista_imagenes(carpeta):
     #guardamos una lista con todos los archivos dentro de carpeta
     archivos = os.listdir(carpeta) 
     
-    imagenes = [a for a in archivos if a.lower().endwitch(FORMATOS_VALIDOS)]
+    imagenes = [a for a in archivos if a.lower().endswith(FORMATOS_VALIDOS)]
     return sorted(imagenes)
 
 def cargar_imagen(ruta):
@@ -28,7 +28,7 @@ def cargar_imagen(ruta):
             print(f"Error: El archivo '{ruta}' no existe.")
             return None
         
-        if not ruta.lower().endwith(FORMATOS_VALIDOS):
+        if not ruta.lower().endswith(FORMATOS_VALIDOS):
             print(f"Error: Formato inválido para '{ruta}', Use PNG o JPG")
             return None
         
