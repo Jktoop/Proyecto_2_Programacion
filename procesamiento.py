@@ -21,3 +21,21 @@ def recibir_imagen(matriz_img, tope=60, esquina=20):
 
     #promedio de color de las esquinas (fondo) R, G, B
     promedio = np.mean(fondo, axis=0)
+
+    #verificar el fondo de la imagen
+    diferencia = matriz_img.astype(np.int32) - promedio
+    distancia = np.sqrt(np.sum(diferencia ** 2, axis=2))
+
+    #clasificar los pixeles como fondo o no fondo
+    mascara = distancia > tope
+    #True = objeto, False = fondo
+
+    return mascara
+
+def reemplazar_fondo(matriz_img, mascara, matriz_fondo):
+    if matriz_img.shape != matriz_fondo.shape:
+        chato = "Error: Las imagenes no tienen las mismas dimensiones."
+        print(chato)
+        return 
+    
+    #me voy a dormir papus, chatisimo
