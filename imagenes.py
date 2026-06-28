@@ -77,7 +77,7 @@ def fondos_alternativos():
     fondos_disponibles = lista_imagenes(CARPETA_FONDOS)
     
     if len(fondos_disponibles) < 2:
-        print(f"Error: Se necesitan al menos 2 imágenes en '{CARPETA_FONDOS}.")
+        print(f"Error: Se necesitan al menos 2 imágenes en {CARPETA_FONDOS}.")
         return[]
     
     felegido = fondos_disponibles[:2] #los 2 primeros en orden alfabetico
