@@ -5,7 +5,7 @@ from PIL import Image    #para abrir y manipular imágenes
 import numpy as np    #importamos numpy agregando alias 
 
 #constantes
-CARPETA_IMAGENES = "Imágenes"
+CARPETA_OBJETOS = "Objetos"
 CARPETA_FONDOS = "Fondos"
 FORMATOS_VALIDOS = (".png",".jpg", ".jpeg")
 
@@ -41,19 +41,19 @@ def cargar_imagen(ruta):
         return None
     
 def selecion_imagen_principal():
-    imagenes_disponibles = lista_imagenes(CARPETA_IMAGENES)
+    imagenes_disponibles = lista_imagenes(CARPETA_OBJETOS)
     
     if not imagenes_disponibles:
-        print(f"Error: No hay imágenes disponibles en '{CARPETA_IMAGENES}'.")
+        print(f"Error: No hay imágenes disponibles en '{CARPETA_OBJETOS}'.")
         return None, None
     print("\nSeleccione una de las siguientes imágenes:")
-    i = 1
+    i = 1                                # para enumerar imagenes
     for nombre in imagenes_disponibles:
-        print(f"  {i}. {nombre}")
-        i += 1
+        print(f"  {i}. {nombre}")        # imprime la lista
+        i += 1                           # numeracion aumenta dps de imprimir cada imagen
         
     while True:
-        entrada = input("\nIngrese el número de la imagen que desea procesar").strip()
+        entrada = input("\nIngrese el número de la imagen que desea procesar: ").strip()
         
         if not entrada.isdigit():
             print("Error: Debe ingresar un número entero. Intente de nuevo.")
@@ -65,7 +65,7 @@ def selecion_imagen_principal():
             continue
         
         nombre_elegido = imagenes_disponibles[opcion - 1]
-        ruta_completa = os.path.join(CARPETA_IMAGENES, nombre_elegido)
+        ruta_completa = os.path.join(CARPETA_OBJETOS, nombre_elegido)
         matriz = cargar_imagen(ruta_completa)
         
         if matriz is None:
