@@ -1,8 +1,8 @@
 #aquí importaremos las imágenes
 #importamos librerías
-import os    #para trabjar con la capreta de imágenes
-from PIL import Image    #para abrir y manipular imágenes
-import numpy as np    #importamos numpy agregando alias 
+import os                    #para trabjar con la capreta de imágenes
+from PIL import Image        #para abrir y manipular imágenes
+import numpy as np           #importamos numpy agregando alias 
 
 #constantes
 CARPETA_OBJETOS = "Objetos"

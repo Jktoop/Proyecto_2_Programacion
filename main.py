@@ -1,14 +1,16 @@
-import numpy as np #redimensionar imagen
-import matplotlib.pyplot as plt #ventana grafica
-from matplotlib.widgets import Button #botones de la ventana grafica
-import datetime as dt #para el archivo de reporte
-from PIL import Image #resize y guardar imagen
+#joaquin Carrillo
+#Sakin Contreras
+#Kevin Inalaf
+import numpy as np                      #redimensionar imagen
+import matplotlib.pyplot as plt         #ventana grafica
+from matplotlib.widgets import Button   #botones de la ventana grafica
+import datetime as dt                   #para el archivo de reporte
+from PIL import Image                   #resize y guardar imagen
 
 from imagenes import selecion_imagen_principal, fondos_alternativos, cargar_imagen
 from procesamiento import recibir_imagen, reemplazar_fondo, coordenadas_objeto, reporte
 
-#crear los botones y ventana
-# a comer
+# crear los botones y ventana
 
 def inicio():
     print("Iniciando el super editor de fondos")
@@ -30,7 +32,7 @@ def inicio():
     nombre_f2, matrizf2 = lista_fondos[1]
     
     mascara = recibir_imagen(img_original)
-    
+
     pil_f1 = Image.fromarray(matrizf1).resize((ancho,alto))
     f1_listo = np.array(pil_f1)
     
@@ -84,7 +86,8 @@ def inicio():
         eje_graf.set_title(f"Reporte creado: {nombre_txt}")
         fig.canvas.draw_idle()
         
-    
+    # orientación de botones 
+
     eje_boton1 = plt.axes([0.05, 0.05, 0.15, 0.08])
     eje_boton2 = plt.axes([0.23, 0.05, 0.15, 0.08])
     eje_boton3 = plt.axes([0.41, 0.05, 0.15, 0.08])
