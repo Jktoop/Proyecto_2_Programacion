@@ -37,7 +37,7 @@ def reemplazar_fondo(matriz_img, mascara, matriz_fondo):
         chato = "Error: Las imagenes no tienen las mismas dimensiones."
         print(chato)
         return 
-    #me voy a dormir papus, chatisimo
+    
 
     resultado = matriz_fondo.copy()
     resultado[mascara] = matriz_img[mascara] #escribe sobre los pixeles del objeto
@@ -69,7 +69,7 @@ def reporte(mascara, nombre_archivo):
           #salto para poner coordenadas despues
           for fila, columna in cordenadas:
               arch.write(f"({fila}, {columna})\n")
-            #que es jodida la identacion dentro de una funcion xd
+            
         
         print(f"Reporte generado: {reporte_n}")
         return reporte_n
